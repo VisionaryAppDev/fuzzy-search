@@ -1,10 +1,10 @@
 {
     "name": "fuzzy-search",
-    "displayName": "fuzzy-search",
+    "displayName": "Fuzzy Search",
     "description": "",
     "version": "0.0.1",
     "engines": {
-        "vscode": "^1.30.0"
+        "vscode": "^1.2.0"
     },
     "categories": [
         "Other"
@@ -16,21 +16,22 @@
     "contributes": {
         "commands": [{
             "command": "extension.fuzzy-search",
-            "title": "fuzzy-search"
+            "title": "Fuzzy Search"
         }],
-         "configuration": {
-             "title": "Ace Jump",
-             "type": "object",
-             "properties": {
-                 "fuzzy-search.highlight": {
-                     "type": "boolean",
-                     "default": "true"
-                 },
-                 "fuzzy-search.border":{
-                    "type":"boolean",
-                    "default": "true"
-                 },
-                "fuzzy-search.border-dark-them-color": {
+        "colors": [{
+            "id": "highlight.color",
+            "description": "Background highlight color",
+            "defaults": {
+                "dark": "#FF000055",
+                "light": "#FF000055",
+                "highContrast": "#FF000055"
+            }
+        }],
+        "configuration": {
+            "title": "Fuzzy Search",
+            "type": "object",
+            "properties": {
+                "fuzzy-search.border-dark-theme-color": {
                     "type": "string",
                     "default": "lightblue"
                 },
@@ -38,19 +39,19 @@
                     "type": "string",
                     "default": "blue"
                 },
-                 "fuzzy-search.border-light-them-color": {
-                     "type": "string",
-                     "default": "darkblue"
-                 },
-                 "fuzzy-search.relocation": {
-                     "type": "string",
-                     "enum": [
-                         "top",
-                         "center",
-                         ""
-                     ],
-                     "default": "center"
-                 }
+                "fuzzy-search.border-light-theme-color": {
+                    "type": "string",
+                    "default": "darkblue"
+                },
+                "fuzzy-search.relocation": {
+                    "type": "string",
+                    "enum": [
+                        "top",
+                        "center",
+                        "bottom"
+                    ],
+                    "default": "center"
+                }
             }
         }
     },
@@ -62,11 +63,11 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^3.1.4",
-        "vscode": "^1.1.25",
-        "tslint": "^5.8.0",
-        "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42",
+        "typescript": "*",
+        "vscode": "*",
+        "tslint": "*",
+        "@types/node": "*",
+        "@types/mocha": "*",
         "fuzzy": "*"
     }
 }

@@ -1,10 +1,10 @@
-import { window, ExtensionContext, OverviewRulerLane, DecorationOptions, TextEditorDecorationType, commands, TextEditor, QuickPickItem, Position, Selection, workspace } from 'vscode';
+import { window, ExtensionContext, OverviewRulerLane, commands, TextEditor, QuickPickItem, Position, Selection } from 'vscode';
 import { Decoration } from './decoration';
 import { Config } from "./config";
 
 export function activate(context: ExtensionContext) {
     context.subscriptions.push(commands.registerCommand('extension.fuzzy-search', async () => {
-        let activeEditor = window.activeTextEditor;
+        const activeEditor = window.activeTextEditor;
         if (activeEditor) {
             const originatedCursorStartPosition = activeEditor.selection.start;
             const originatedCurosorEndPosition = activeEditor.selection.end;
@@ -13,11 +13,13 @@ export function activate(context: ExtensionContext) {
 
             // HOLD: can't put it to pallete :(
             // getUserSelectedText(activeEditor);
+
+
             const result = await window.showQuickPick(item, {
                 onDidSelectItem: item => {
                     const selectedLine = locateSelectedItemLine(item.label);
                     const position = new Position(selectedLine, 0);
-                    moveCursorToSelectedItemLine(activeEditor, position, position);
+                    moveCursorToProvidedPosition(activeEditor, position, position);
                     getEditorToCenter(activeEditor);
 
 
@@ -33,7 +35,7 @@ export function activate(context: ExtensionContext) {
                 ignoreFocusOut: true
             }).then((response) => {
                 if (response === undefined) {
-                    moveCursorToSelectedItemLine(activeEditor, originatedCursorStartPosition, originatedCurosorEndPosition);
+                    moveCursorToProvidedPosition(activeEditor, originatedCursorStartPosition, originatedCurosorEndPosition);
                     getEditorToCenter(activeEditor);
                 }
 
@@ -48,7 +50,7 @@ const config: Config = new Config();
 
 
 
-function moveCursorToSelectedItemLine(activeEditor: TextEditor, anchor: Position, active: Position) {
+function moveCursorToProvidedPosition(activeEditor: TextEditor, anchor: Position, active: Position) {
     activeEditor.selection = new Selection(anchor, active);
 }
 
@@ -60,10 +62,13 @@ export function getLineDecorator() {
         overviewRulerColor: config.borderRulerColor,
         overviewRulerLane: OverviewRulerLane.Right,
         light: {
-            borderColor: config.borderLightThemColor
+            borderColor: config.borderLightThemeColor
         },
         dark: {
-            borderColor: config.borderDarkThemColor
+            borderColor: config.borderDarkThemeColor
+        },
+        backgroundColor: {
+            id: "highlight.color"
         }
     });
 }

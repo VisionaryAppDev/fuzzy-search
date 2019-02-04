@@ -1,0 +1,16 @@
+//  "fuzzy-search.highlight": {
+//      "type": "boolean",
+//      "default": "true"
+//  },
+//  "fuzzy-search.highlight-dark-theme-color": {
+//      "type": "string",
+//      "default": "#FF000055"
+//  },
+//  "fuzzy-search.highligh-light-theme-color": {
+//      "type": "string",
+//      "default": "#FF000055"
+//  },
+//  "fuzzy-search.border":{
+//     "type":"boolean",
+//     "default": "true"
+//  },
