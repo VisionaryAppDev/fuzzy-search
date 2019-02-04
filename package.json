@@ -17,7 +17,42 @@
         "commands": [{
             "command": "extension.fuzzy-search",
             "title": "fuzzy-search"
-        }]
+        }],
+         "configuration": {
+             "title": "Ace Jump",
+             "type": "object",
+             "properties": {
+                 "fuzzy-search.highlight": {
+                     "type": "boolean",
+                     "default": "true"
+                 },
+                 "fuzzy-search.border":{
+                    "type":"boolean",
+                    "default": "true"
+                 },
+                "fuzzy-search.border-dark-them-color": {
+                    "type": "string",
+                    "default": "lightblue"
+                },
+                "fuzzy-search.border-ruler-color": {
+                    "type": "string",
+                    "default": "blue"
+                },
+                 "fuzzy-search.border-light-them-color": {
+                     "type": "string",
+                     "default": "darkblue"
+                 },
+                 "fuzzy-search.relocation": {
+                     "type": "string",
+                     "enum": [
+                         "top",
+                         "center",
+                         ""
+                     ],
+                     "default": "center"
+                 }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
