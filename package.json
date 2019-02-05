@@ -2,7 +2,7 @@
     "name": "fuzzy-search",
     "displayName": "Fuzzy Search",
     "description": "",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "Norin",
     "homepage": "https://github.com/VisionaryAppDev/fuzzy-search",
     "license": "https://github.com/VisionaryAppDev/fuzzy-search/license.md",
@@ -16,7 +16,7 @@
         "url": "https://github.com/VisionaryAppDev/fuzzy-search.git"
     },
     "engines": {
-        "vscode": "^1.31.0-insider"
+        "vscode": "^1.1.21"
     },
     "categories": [
         "Other"
