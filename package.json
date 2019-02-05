@@ -3,8 +3,20 @@
     "displayName": "Fuzzy Search",
     "description": "",
     "version": "0.0.1",
+    "publisher": "NorinK",
+    "homepage": "https://github.com/VisionaryAppDev/fuzzy-search",
+    "license": "https://github.com/VisionaryAppDev/fuzzy-search/license.md",
+    "keywords": [
+        "fuzzy",
+        "search",
+        "find"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/VisionaryAppDev/fuzzy-search.git"
+    },
     "engines": {
-        "vscode": "^1.2.0"
+        "vscode": "^1.31.0-insider"
     },
     "categories": [
         "Other"
@@ -58,16 +70,14 @@
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "*",
+        "typescript": "^3.1.4",
         "vscode": "*",
-        "tslint": "*",
-        "@types/node": "*",
-        "@types/mocha": "*",
-        "fuzzy": "*"
+        "tslint": "^5.8.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42"
     }
 }

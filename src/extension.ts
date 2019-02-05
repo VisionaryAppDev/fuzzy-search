@@ -15,13 +15,12 @@ export function activate(context: ExtensionContext) {
             // getUserSelectedText(activeEditor);
 
 
-            const result = await window.showQuickPick(item, {
+            window.showQuickPick(item, {
                 onDidSelectItem: item => {
-                    const selectedLine = locateSelectedItemLine(item.label);
+                    const selectedLine = locateSelectedItemLine((item as QuickPickItem).label);
                     const position = new Position(selectedLine, 0);
                     moveCursorToProvidedPosition(activeEditor, position, position);
                     getEditorToCenter(activeEditor);
-
 
 
                     // Line Decoration
@@ -78,7 +77,7 @@ export function getEditorToCenter(activeEditor: TextEditor) {
     commands.executeCommand("revealLine", {
         lineNumber: currentLine,
         at: config.relocation
-    })
+    });
 
 }
 
@@ -89,7 +88,7 @@ export function getTextLineByLine(activeEditor: TextEditor) {
 }
 
 
-function locateSelectedItemLine(text: string): number {
+export function locateSelectedItemLine(text: string): number {
     return Number.parseInt(text.split(/\D/)[0]);
 }
 
